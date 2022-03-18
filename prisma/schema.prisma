@@ -42,6 +42,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  Comment       Comment[]
 }
 
 model VerificationToken {
@@ -50,4 +51,17 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  score     Int      @default(0)
+  content   String
+  authorId  String
+  replyTo   String?
+
+  user           User      @relation(fields: [authorId], references: [id])
+  replyToComment Comment?  @relation("CommentReplies", fields: [replyTo], references: [id])
+  replies        Comment[] @relation("CommentReplies")
 }
