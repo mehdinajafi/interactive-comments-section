@@ -1,5 +1,3 @@
-const SingleComment = () => {
-  return <article></article>;
-};
+import SingleComment from "./SingleComment";
 
 export default SingleComment;

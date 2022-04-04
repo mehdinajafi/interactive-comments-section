@@ -45,6 +45,7 @@ const globalStyles = globalCss({
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   globalStyles();
+
   return (
     <SessionProvider session={session}>
       <Component {...pageProps} />

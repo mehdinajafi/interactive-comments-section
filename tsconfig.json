@@ -16,10 +16,11 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "stitches-config": ["stitches.config.js"],
-      "@/components/*": ["components/*"]
+      "stitches-config": ["stitches.config.ts"],
+      "@/components/*": ["components/*"],
+      "@/contexts/*": ["contexts/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "stitches.config.ts"],
   "exclude": ["node_modules"]
 }

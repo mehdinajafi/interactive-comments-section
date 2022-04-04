@@ -1,4 +1,5 @@
 import { createStitches } from "@stitches/react";
+import type * as Stitches from "@stitches/react";
 
 const spacesAndSizes = {
   1: "0.125rem",
@@ -93,11 +94,11 @@ export const {
       ...spacesAndSizes,
     },
     sizes: {
-      sm: "640px",
-      md: "768px",
-      lg: "1024px",
-      xl: "1280px",
-      xxl: "1536px",
+      sm: "540px",
+      md: "720px",
+      lg: "960px",
+      xl: "1140px",
+      xxl: "1320px",
       full: "100%",
       0: "0px",
       px: "1px",
@@ -116,71 +117,41 @@ export const {
     },
   },
   media: {
-    sm: "(min-width: 640px)",
+    sm: "(min-width: 576px)",
     md: "(min-width: 768px)",
-    lg: "(min-width: 1024px)",
-    xl: "(min-width: 1280px)",
-    xxl: "(min-width: 1536px)",
+    lg: "(min-width: 992px)",
+    xl: "(min-width: 1200px)",
+    xxl: "(min-width: 1400px)",
   },
   utils: {
     // Abbreviated margin properties
-    m: (value) => ({
-      margin: value,
-    }),
-    mt: (value) => ({
-      marginTop: value,
-    }),
-    mr: (value) => ({
-      marginRight: value,
-    }),
-    mb: (value) => ({
-      marginBottom: value,
-    }),
-    ml: (value) => ({
-      marginLeft: value,
-    }),
-    mx: (value) => ({
+    mx: (value: Stitches.ScaleValue<"space">) => ({
       marginLeft: value,
       marginRight: value,
     }),
-    my: (value) => ({
+    my: (value: Stitches.ScaleValue<"space">) => ({
       marginTop: value,
       marginBottom: value,
     }),
 
     // Abbreviated padding properties
-    p: (value) => ({
-      padding: value,
-    }),
-    pt: (value) => ({
-      paddingTop: value,
-    }),
-    pr: (value) => ({
-      paddingRight: value,
-    }),
-    pb: (value) => ({
-      paddingBottom: value,
-    }),
-    pl: (value) => ({
-      paddingLeft: value,
-    }),
-    px: (value) => ({
+    px: (value: Stitches.ScaleValue<"space">) => ({
       paddingLeft: value,
       paddingRight: value,
     }),
-    py: (value) => ({
+    py: (value: Stitches.ScaleValue<"space">) => ({
       paddingTop: value,
       paddingBottom: value,
     }),
 
     // A property for applying width/height together
-    size: (value) => ({
+    size: (value: Stitches.ScaleValue<"size">) => ({
       width: value,
       height: value,
     }),
 
     // A property to apply linear gradient
-    linearGradient: (value) => ({
+    linearGradient: (value: string) => ({
       backgroundImage: `linear-gradient(${value})`,
     }),
   },

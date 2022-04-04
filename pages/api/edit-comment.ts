@@ -6,12 +6,24 @@ const prisma = new PrismaClient();
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const comment = JSON.parse(req.body);
-    const newComment = await prisma.comment.create({
-      data: comment,
+    const newComment = await prisma.comment.update({
+      where: {
+        id: comment.id,
+      },
+      data: {
+        content: comment.content,
+        score: comment.score,
+      },
       include: {
         user: true,
+        replies: {
+          include: {
+            user: true,
+          },
+        },
       },
     });
+
     return res.status(200).json(newComment);
   } catch (error) {
     res.status(400).json({
