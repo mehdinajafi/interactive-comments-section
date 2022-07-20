@@ -1,5 +1,5 @@
 import { styled } from "stitches-config";
-import SingleComment from "../SingleComment";
+import SingleComment from "@/components/SingleComment";
 import { IComment } from "@/types/comment";
 
 interface ICommentWrapper {

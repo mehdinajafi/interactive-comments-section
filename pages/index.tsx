@@ -5,9 +5,9 @@ import { PrismaClient } from "@prisma/client";
 import superjson from "superjson";
 import CommentsProvider from "@/contexts/Comments";
 import CommentForm from "@/components/CommentForm";
-import Container from "@/components/Container";
+import Container from "@/components/shared/Container";
 import Comments from "@/components/Comments";
-import Modal from "@/components/Modal";
+import Modal from "@/components/shared/Modal";
 import Auth from "@/components/Auth";
 import { IComment } from "@/types/comment";
 

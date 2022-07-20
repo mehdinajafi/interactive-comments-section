@@ -1,10 +1,10 @@
-import { CommentsContext } from "@/contexts/Comments";
 import { useSession } from "next-auth/react";
 import { useContext, useState } from "react";
 import { styled } from "stitches-config";
-import Avatar from "../Avatar";
-import Button from "../Button";
-import Textarea from "../Textarea";
+import { CommentsContext } from "@/contexts/Comments";
+import Avatar from "@/components/shared/Avatar";
+import Button from "@/components/shared/Button";
+import Textarea from "@/components/shared/Textarea";
 
 const StyledForm = styled("form", {
   display: "flex",

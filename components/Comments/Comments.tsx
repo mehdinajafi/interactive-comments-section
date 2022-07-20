@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { styled } from "stitches-config";
 import { CommentsContext } from "@/contexts/Comments";
-import CommentWrapper from "../CommentWrapper";
+import CommentWrapper from "@/components/CommentWrapper";
 
 const Container = styled("div", {
   flexGrow: 1,

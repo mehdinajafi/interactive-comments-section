@@ -2,21 +2,21 @@ import React, { useContext, useState } from "react";
 import { styled } from "stitches-config";
 import { useSession } from "next-auth/react";
 import formatDistance from "date-fns/formatDistance";
-import Avatar from "../Avatar";
+import Avatar from "@/components/shared/Avatar";
+import Box from "@/components/shared/Box";
+import Button from "@/components/shared/Button";
+import Typography from "@/components/shared/Typography";
+import { CommentsContext } from "@/contexts/Comments";
+import Textarea from "@/components/shared/Textarea";
+import Badge from "@/components/shared/Badge";
+import CommentForm from "@/components/CommentForm";
+import Hidden from "@/components/shared/Hidden";
+import { IComment } from "@/types/comment";
 import PlusIcon from "@/images/icon-plus.svg";
 import MinusIcon from "@/images/icon-minus.svg";
-import ReplyIcon from "../../public/images/icon-reply.svg";
-import DeleteIcon from "../../public/images/icon-delete.svg";
-import EditIcon from "../../public/images/icon-edit.svg";
-import Box from "../Box";
-import Button from "../Button";
-import Typography from "../Typography";
-import { CommentsContext } from "@/contexts/Comments";
-import Textarea from "../Textarea";
-import Badge from "../Badge";
-import CommentForm from "../CommentForm";
-import Hidden from "../Hidden";
-import { IComment } from "types/comment";
+import ReplyIcon from "@/images/icon-reply.svg";
+import DeleteIcon from "@/images/icon-delete.svg";
+import EditIcon from "@/images/icon-edit.svg";
 
 const Container = styled("article", {
   display: "flex",
