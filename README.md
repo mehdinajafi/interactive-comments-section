@@ -1,7 +1,7 @@
 # interactive comments section
 
 - **Framework:** [Next.js](https://nextjs.org/)
-- **Database:** [PlanetScale](https://planetscale.com/)
+- **Database:** [Heroku](https://heroku.com/)
 - **ORM:** [Prisma](https://www.prisma.io/)
 - **Authentication:** [NextAuth.js](https://next-auth.js.org/)
 - **Deployment:** [Vercel](https://vercel.com/)
