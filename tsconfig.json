@@ -18,7 +18,9 @@
     "paths": {
       "stitches-config": ["stitches.config.ts"],
       "@/components/*": ["components/*"],
-      "@/contexts/*": ["contexts/*"]
+      "@/contexts/*": ["contexts/*"],
+      "@/types/*": ["types/*"],
+      "@/images/*": ["public/images/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "stitches.config.ts"],
