@@ -20,7 +20,8 @@
       "@/components/*": ["components/*"],
       "@/contexts/*": ["contexts/*"],
       "@/types/*": ["types/*"],
-      "@/images/*": ["public/images/*"]
+      "@/images/*": ["public/images/*"],
+      "@/prisma/*": ["prisma/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "stitches.config.ts"],
