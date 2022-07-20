@@ -8,7 +8,7 @@ import CommentForm from "@/components/CommentForm";
 import Container from "@/components/shared/Container";
 import Comments from "@/components/Comments";
 import Modal from "@/components/shared/Modal";
-import Auth from "@/components/Auth";
+import Signin from "@/components/Signin";
 import { IComment } from "@/types/comment";
 
 interface IHome {
@@ -28,7 +28,7 @@ const Home: NextPage<IHome> = (props) => {
 
       {status === "unauthenticated" && (
         <Modal>
-          <Auth />
+          <Signin />
         </Modal>
       )}
 

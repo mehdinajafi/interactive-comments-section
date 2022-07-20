@@ -5,14 +5,14 @@ const Container = styled("div", {
   padding: "$8",
 });
 
-const AuthHeading = styled("h2", {
+const Heading = styled("h2", {
   margin: 0,
   marginBottom: "$8",
   fontFamily: "$base",
   fontSize: "$lg",
 });
 
-const AuthBtn = styled("button", {
+const Button = styled("button", {
   backgroundColor: "$ntrl-min",
   fontFamily: "$base",
   border: "1px solid $ntrl-lt",
@@ -34,14 +34,14 @@ const AuthBtn = styled("button", {
   },
 });
 
-const Auth = () => {
+const Signin = () => {
   return (
     <Container>
-      <AuthHeading>Sign in</AuthHeading>
-      <AuthBtn onClick={() => signIn("google")}>Sign in with Google</AuthBtn>
-      <AuthBtn onClick={() => signIn("github")}>Sign in with Github</AuthBtn>
+      <Heading>Sign in</Heading>
+      <Button onClick={() => signIn("google")}>Sign in with Google</Button>
+      <Button onClick={() => signIn("github")}>Sign in with Github</Button>
     </Container>
   );
 };
 
-export default Auth;
+export default Signin;
