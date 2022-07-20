@@ -1,8 +1,8 @@
 import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import { useSession } from "next-auth/react";
-import { PrismaClient } from "@prisma/client";
 import superjson from "superjson";
+import prisma from "@/prisma/client";
 import CommentsProvider from "@/contexts/Comments";
 import CommentForm from "@/components/CommentForm";
 import Container from "@/components/shared/Container";
@@ -39,8 +39,6 @@ const Home: NextPage<IHome> = (props) => {
     </CommentsProvider>
   );
 };
-
-const prisma = new PrismaClient();
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const comments = await prisma.comment.findMany({
