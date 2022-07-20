@@ -1,11 +1,10 @@
 import React, { useContext, useState } from "react";
-import { Comment } from "@prisma/client";
 import { styled } from "stitches-config";
 import { useSession } from "next-auth/react";
 import formatDistance from "date-fns/formatDistance";
 import Avatar from "../Avatar";
-import PlusIcon from "../../public/images/icon-plus.svg";
-import MinusIcon from "../../public/images/icon-minus.svg";
+import PlusIcon from "@/images/icon-plus.svg";
+import MinusIcon from "@/images/icon-minus.svg";
 import ReplyIcon from "../../public/images/icon-reply.svg";
 import DeleteIcon from "../../public/images/icon-delete.svg";
 import EditIcon from "../../public/images/icon-edit.svg";
@@ -17,6 +16,7 @@ import Textarea from "../Textarea";
 import Badge from "../Badge";
 import CommentForm from "../CommentForm";
 import Hidden from "../Hidden";
+import { IComment } from "types/comment";
 
 const Container = styled("article", {
   display: "flex",
@@ -63,7 +63,7 @@ const UserName = styled("span", {
 });
 
 interface ISingleComment {
-  comment: Comment;
+  comment: IComment;
   replyComment?: boolean;
 }
 

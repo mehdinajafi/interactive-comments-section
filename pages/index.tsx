@@ -1,7 +1,7 @@
 import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import { useSession } from "next-auth/react";
-import { PrismaClient, Comment as IComment } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import superjson from "superjson";
 import CommentsProvider from "@/contexts/Comments";
 import CommentForm from "@/components/CommentForm";
@@ -9,6 +9,7 @@ import Container from "@/components/Container";
 import Comments from "@/components/Comments";
 import Modal from "@/components/Modal";
 import Auth from "@/components/Auth";
+import { IComment } from "@/types/comment";
 
 interface IHome {
   comments: IComment[];

@@ -1,5 +1,5 @@
-import { Comment as IComment } from "@prisma/client";
 import { createContext, useReducer } from "react";
+import { IComment } from "@/types/comment";
 
 export enum ActionsType {
   "SET" = "SET",

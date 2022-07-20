@@ -1,6 +1,6 @@
-import { Comment as IComment } from "@prisma/client";
 import { styled } from "stitches-config";
 import SingleComment from "../SingleComment";
+import { IComment } from "@/types/comment";
 
 interface ICommentWrapper {
   comment: IComment;
