@@ -125,27 +125,27 @@ export const {
   },
   utils: {
     // Abbreviated margin properties
-    mx: (value: Stitches.ScaleValue<"space">) => ({
+    mx: (value: Stitches.PropertyValue<"margin">) => ({
       marginLeft: value,
       marginRight: value,
     }),
-    my: (value: Stitches.ScaleValue<"space">) => ({
+    my: (value: Stitches.PropertyValue<"margin">) => ({
       marginTop: value,
       marginBottom: value,
     }),
 
     // Abbreviated padding properties
-    px: (value: Stitches.ScaleValue<"space">) => ({
+    px: (value: Stitches.PropertyValue<"padding">) => ({
       paddingLeft: value,
       paddingRight: value,
     }),
-    py: (value: Stitches.ScaleValue<"space">) => ({
+    py: (value: Stitches.PropertyValue<"padding">) => ({
       paddingTop: value,
       paddingBottom: value,
     }),
 
     // A property for applying width/height together
-    size: (value: Stitches.ScaleValue<"size">) => ({
+    size: (value: Stitches.PropertyValue<"width" | "height">) => ({
       width: value,
       height: value,
     }),
