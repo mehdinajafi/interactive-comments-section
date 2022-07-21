@@ -1,42 +1,55 @@
 import { styled } from "stitches-config";
 
 const Button = styled("button", {
+  "$$btn-padding-x": "$space$6",
+  "$$btn-padding-y": "$space$3",
+  "$$btn-font-size": "$fontSizes$sm",
+  "$$btn-font-weight": "$fontWeights$regular",
+
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
 
-  px: "$6",
-  py: "$3",
+  px: "$$btn-padding-x",
+  py: "$$btn-padding-y",
 
   fontFamily: "$base",
-  fontSize: "$sm",
-  fontWeight: "$regular",
+  fontSize: "$$btn-font-size",
+  fontWeight: "$$btn-font-weight",
 
-  backgroundColor: "inherit",
   border: "1px solid transparent",
   borderRadius: "$base",
   boxShadow: "none",
-
+  backgroundColor: "$$btn-bg",
+  color: "$$btn-color",
+  borderColor: "$$btn-border-color",
   cursor: "pointer",
   transition: `
   color .15s ease-in-out,
   background-color .15s ease-in-out,
   border-color .15s ease-in-out,
   box-shadow .15s ease-in-out`,
-
   "@md": {
     fontSize: "$base",
   },
-
+  "&:hover": {
+    backgroundColor: "$$btn-hover-bg",
+    border: "1px solid $$btn-hover-border-color",
+  },
   "&:focus": {
+    boxShadow: "0 0 0 $space$2 $$btn-focus-box-shadow",
     outline: "none",
   },
-
+  "&:focus-visible": {
+    outline: "1px dashed $$btn-focus-visible-outline",
+    outlineOffset: "$space$2",
+  },
   "&:disabled": {
-    opacity: 0.7,
+    backgroundColor: "$$btn-disabled-bg",
+    borderColor: "$$btn-disabled-border-color",
+    opacity: "0.7",
     cursor: "not-allowed",
   },
-
   "> svg": {
     "&:only-child": {},
     "&:not(:only-child)": {
@@ -47,75 +60,76 @@ const Button = styled("button", {
   variants: {
     variant: {
       primary: {
-        backgroundColor: "$primary",
-        color: "$ntrl-min",
-        borderColor: "$primary",
-        "&:hover": {
-          backgroundColor: "$primary-dk",
-          border: "1px solid $primary-dk",
-        },
-        "&:focus": {
-          boxShadow: "0 0 0 $space$2 $colors$primary-lt",
-        },
-        "&:focus-visible": {
-          outline: "1px dashed $primary",
-          outlineOffset: "$space$2",
-        },
-        "&:disabled": {
-          backgroundColor: "$primary-lt",
-          borderColor: "$primary-lt",
-          cursor: "not-allowed",
-        },
+        "$$btn-bg": "$colors$primary",
+        "$$btn-color": "$colors$ntrl-min",
+        "$$btn-border-color": "$colors$primary",
+        "$$btn-hover-bg": "$colors$primary-dk",
+        "$$btn-hover-border-color": "$colors$primary-dk",
+        "$$btn-focus-box-shadow": "$colors$primary-lt",
+        "$$btn-focus-visible-outline": "$colors$primary-lt",
+        "$$btn-disabled-bg": "$colors$primary-lt",
+        "$$btn-disabled-border-color": "$colors$primary-lt",
+      },
+      secondary: {
+        "$$btn-bg": "$colors$secondary",
+        "$$btn-color": "$colors$ntrl-min",
+        "$$btn-border-color": "$colors$secondary",
+        "$$btn-hover-bg": "$colors$secondary-dk",
+        "$$btn-hover-border-color": "$colors$secondary-dk",
+        "$$btn-focus-box-shadow": "$colors$secondary-lt",
+        "$$btn-focus-visible-outline": "$colors$secondary-lt",
+        "$$btn-disabled-bg": "$colors$secondary-lt",
+        "$$btn-disabled-border-color": "$colors$secondary-lt",
       },
       danger: {
-        backgroundColor: "$danger",
-        color: "$ntrl-min",
-        borderColor: "$danger",
-        "&:hover": {
-          backgroundColor: "$danger-dk",
-          border: "1px solid $danger-dk",
-        },
-        "&:focus": {
-          boxShadow: "0 0 0 $space$2 $colors$danger-lt",
-        },
-        "&:focus-visible": {
-          outline: "1px dashed $danger",
-          outlineOffset: "$space$2",
-        },
-        "&:disabled": {
-          backgroundColor: "$danger-lt",
-          borderColor: "$danger-lt",
-          cursor: "not-allowed",
-        },
+        "$$btn-bg": "$colors$danger",
+        "$$btn-color": "$colors$ntrl-min",
+        "$$btn-border-color": "$colors$danger",
+        "$$btn-hover-bg": "$colors$danger-dk",
+        "$$btn-hover-border-color": "$colors$danger-dk",
+        "$$btn-focus-box-shadow": "$colors$danger-lt",
+        "$$btn-focus-visible-outline": "$colors$danger-lt",
+        "$$btn-disabled-bg": "$colors$danger-lt",
+        "$$btn-disabled-border-color": "$colors$danger-lt",
       },
       "lite-primary": {
-        color: "$primary",
-        borderColor: "transparent",
-        backgroundColor: "transparent",
+        "$$btn-bg": "transparent",
+        "$$btn-color": "$colors$primary",
+        "$$btn-border-color": "transparent",
+        "$$btn-hover-bg": "transparent",
+        "$$btn-hover-border-color": "transparent",
+        "$$btn-focus-box-shadow": "transparent",
+        "$$btn-focus-visible-outline": "$colors$primary-lt",
+        "$$btn-disabled-bg": "transparent",
+        "$$btn-disabled-border-color": "transparent",
       },
       "lite-danger": {
-        color: "$danger",
-        borderColor: "transparent",
-        backgroundColor: "transparent",
+        "$$btn-bg": "transparent",
+        "$$btn-color": "$colors$danger",
+        "$$btn-border-color": "transparent",
+        "$$btn-hover-bg": "transparent",
+        "$$btn-hover-border-color": "transparent",
+        "$$btn-focus-box-shadow": "transparent",
+        "$$btn-focus-visible-outline": "$colors$danger-lt",
+        "$$btn-disabled-bg": "transparent",
+        "$$btn-disabled-border-color": "transparent",
       },
     },
     size: {
       sm: {
-        px: "$4",
-        py: "$2",
-        fontSize: "$xs",
-
+        "$$btn-padding-x": "$space$4",
+        "$$btn-padding-y": "$space$2",
+        "$$btn-font-size": "$fontSizes$xs",
         "@md": {
-          fontSize: "$sm",
+          "$$btn-font-size": "$fontSizes$sm",
         },
       },
       lg: {
-        px: "$8",
-        py: "$4",
-        fontSize: "$md",
-
+        "$$btn-padding-x": "$space$8",
+        "$$btn-padding-y": "$space$3",
+        "$$btn-font-size": "$fontSizes$md",
         "@md": {
-          fontSize: "$lg",
+          "$$btn-font-size": "$fontSizes$lg",
         },
       },
     },
