@@ -67,6 +67,27 @@ const Button = styled("button", {
           cursor: "not-allowed",
         },
       },
+      danger: {
+        backgroundColor: "$danger",
+        color: "$ntrl-min",
+        borderColor: "$danger",
+        "&:hover": {
+          backgroundColor: "$danger-dk",
+          border: "1px solid $danger-dk",
+        },
+        "&:focus": {
+          boxShadow: "0 0 0 $space$2 $colors$danger-lt",
+        },
+        "&:focus-visible": {
+          outline: "1px dashed $danger",
+          outlineOffset: "$space$2",
+        },
+        "&:disabled": {
+          backgroundColor: "$danger-lt",
+          borderColor: "$danger-lt",
+          cursor: "not-allowed",
+        },
+      },
       "lite-primary": {
         color: "$primary",
         borderColor: "transparent",
