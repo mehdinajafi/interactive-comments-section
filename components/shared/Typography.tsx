@@ -1,6 +1,6 @@
 import { styled } from "stitches-config";
 
-const STypography = styled("div", {
+const StyledTypography = styled("div", {
   variants: {
     variant: {
       subtitle1: {
@@ -18,7 +18,35 @@ const STypography = styled("div", {
         },
       },
     },
-    textAlign: {
+    weight: {
+      regular: {
+        fontWeight: "$regular",
+      },
+      medium: {
+        fontWeight: "$medium",
+      },
+      bold: {
+        fontWeight: "$bold",
+      },
+    },
+    size: {
+      xs: {
+        fontSize: "$xs",
+      },
+      sm: {
+        fontSize: "$sm",
+      },
+      base: {
+        fontSize: "$base",
+      },
+      lg: {
+        fontSize: "$lg",
+      },
+      xl: {
+        fontSize: "$xl",
+      },
+    },
+    align: {
       start: {
         textAlign: "start",
       },
@@ -35,24 +63,18 @@ const STypography = styled("div", {
   },
 });
 
-interface ITypography extends React.ComponentProps<typeof STypography> {
-  fontWeight?: string;
-}
+interface ITypography extends React.ComponentProps<typeof StyledTypography> {}
 
 const Typography: React.FC<ITypography> = ({
   children,
   color,
-  fontWeight,
   css,
   ...props
 }) => {
   return (
-    <STypography
-      {...props}
-      css={{ color: `$${color}`, fontWeight: `$${fontWeight}`, ...css }}
-    >
+    <StyledTypography {...props} css={{ color: `$${color}`, ...css }}>
       {children}
-    </STypography>
+    </StyledTypography>
   );
 };
 

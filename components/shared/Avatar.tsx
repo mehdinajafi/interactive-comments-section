@@ -2,7 +2,16 @@ import { styled } from "stitches-config";
 
 const StyledAvatar = styled("img", {
   borderRadius: "$full",
-  size: "$20",
+  variants: {
+    size: {
+      sm: {
+        size: "$20",
+      },
+      lg: {
+        size: "$40",
+      },
+    },
+  },
 });
 
 interface IAvatar

@@ -2,11 +2,11 @@ import React, { useContext, useState } from "react";
 import { styled } from "stitches-config";
 import { useSession } from "next-auth/react";
 import formatDistance from "date-fns/formatDistance";
+import { CommentsContext } from "@/contexts/Comments";
 import Avatar from "@/components/shared/Avatar";
 import Box from "@/components/shared/Box";
 import Button from "@/components/shared/Button";
 import Typography from "@/components/shared/Typography";
-import { CommentsContext } from "@/contexts/Comments";
 import Textarea from "@/components/shared/Textarea";
 import Badge from "@/components/shared/Badge";
 import CommentForm from "@/components/CommentForm";
@@ -192,7 +192,7 @@ const SingleComment: React.FC<ISingleComment> = (props) => {
         >
           <PlusIcon />
         </Button>
-        <Typography color="primary-dk" fontWeight="bold">
+        <Typography color="primary-dk" weight="bold">
           {props.comment.score}
         </Typography>
         <Button
@@ -219,6 +219,7 @@ const SingleComment: React.FC<ISingleComment> = (props) => {
           >
             <Box alignItems="center">
               <Avatar
+                size="sm"
                 src={props.comment.user.image}
                 alt={props.comment.user.name}
               />
