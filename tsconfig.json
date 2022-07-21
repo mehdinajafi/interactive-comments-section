@@ -21,7 +21,8 @@
       "@/contexts/*": ["contexts/*"],
       "@/types/*": ["types/*"],
       "@/images/*": ["public/images/*"],
-      "@/prisma/*": ["prisma/*"]
+      "@/prisma/*": ["prisma/*"],
+      "@/hooks/*": ["hooks/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "stitches.config.ts"],
