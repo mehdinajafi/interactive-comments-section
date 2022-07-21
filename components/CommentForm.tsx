@@ -5,6 +5,8 @@ import { CommentsContext } from "@/contexts/Comments";
 import Avatar from "@/components/shared/Avatar";
 import Button from "@/components/shared/Button";
 import Textarea from "@/components/shared/Textarea";
+import Modal from "@/components/shared/Modal";
+import SignOut from "@/components/Signout";
 
 const StyledForm = styled("form", {
   display: "flex",
@@ -20,6 +22,12 @@ const StyledForm = styled("form", {
   },
 });
 
+const Buttons = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  gap: "$5",
+});
+
 interface ICommentForm {
   replyTo?: string;
   setIsReplying?: React.Dispatch<React.SetStateAction<boolean>>;
@@ -27,6 +35,7 @@ interface ICommentForm {
 
 const CommentForm: React.FC<ICommentForm> = (props) => {
   const [loading, setLoading] = useState(false);
+  const [isSignoutModalOpen, setIsSignoutModalOpen] = useState(false);
   const { data: session } = useSession();
   const { sendNewComment } = useContext(CommentsContext);
 
@@ -60,11 +69,27 @@ const CommentForm: React.FC<ICommentForm> = (props) => {
 
   return (
     <StyledForm onSubmit={submit}>
-      <Avatar src={session?.user?.image} alt={session?.user?.name} />
-      <Textarea css={{ minHeight: "$30" }} name="comment" />
-      <Button variant="primary" size="lg" disabled={loading}>
-        {props.replyTo ? "REPLY" : "SEND"}
-      </Button>
+      <Avatar size="sm" src={session?.user?.image} alt={session?.user?.name} />
+      <Modal
+        show={isSignoutModalOpen}
+        onClose={() => setIsSignoutModalOpen(false)}
+      >
+        <SignOut close={() => setIsSignoutModalOpen(false)} />
+      </Modal>
+      <Textarea css={{ minHeight: "$32" }} name="comment" />
+
+      <Buttons>
+        <Button variant="primary" size="lg" disabled={loading}>
+          {props.replyTo ? "REPLY" : "SEND"}
+        </Button>
+        <Button
+          variant="secondary"
+          size="lg"
+          onClick={() => setIsSignoutModalOpen(true)}
+        >
+          Setiings
+        </Button>
+      </Buttons>
     </StyledForm>
   );
 };
