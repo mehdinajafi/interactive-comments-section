@@ -25,7 +25,6 @@ const Container = styled("article", {
   gap: "$5",
   width: "$full",
   padding: "$5",
-  marginTop: "$10",
   borderRadius: "$lg",
   backgroundColor: "$ntrl-min",
   "&:last-child": {
@@ -224,7 +223,7 @@ const SingleComment: React.FC<ISingleComment> = (props) => {
                 alt={props.comment.user.name}
               />
               <UserName>{props.comment.user.name}</UserName>
-              {props.comment.authorId === session?.user.id && (
+              {session && props.comment.authorId === session.user.id && (
                 <Badge
                   variant="primary"
                   size="small"
@@ -244,7 +243,7 @@ const SingleComment: React.FC<ISingleComment> = (props) => {
             </Box>
 
             <Hidden mdDown>
-              <Box alignItems="center">{renderOptions()}</Box>
+              <Box alignItems="center">{session && renderOptions()}</Box>
             </Hidden>
           </Box>
 

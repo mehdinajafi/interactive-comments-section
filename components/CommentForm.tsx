@@ -13,7 +13,7 @@ const StyledForm = styled("form", {
   alignItems: "start",
   gap: "$5",
   padding: "$5",
-  my: "$5",
+  my: "$8",
   borderRadius: "$lg",
   backgroundColor: "$ntrl-min",
   "@md": {
@@ -87,7 +87,7 @@ const CommentForm: React.FC<ICommentForm> = (props) => {
           size="lg"
           onClick={() => setIsSignoutModalOpen(true)}
         >
-          Setiings
+          Settings
         </Button>
       </Buttons>
     </StyledForm>

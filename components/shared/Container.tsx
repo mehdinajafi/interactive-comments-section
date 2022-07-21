@@ -1,6 +1,7 @@
 import { styled } from "stitches-config";
 
 const Container = styled("div", {
+  display: "flex",
   flexDirection: "column",
   size: "$full",
   mx: "auto",
