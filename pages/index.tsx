@@ -26,11 +26,9 @@ const Home: NextPage<IHome> = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {status === "unauthenticated" && (
-        <Modal>
-          <Signin />
-        </Modal>
-      )}
+      <Modal show={status === "unauthenticated"}>
+        <Signin />
+      </Modal>
 
       <Container>
         <Comments />

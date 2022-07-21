@@ -1,40 +1,106 @@
-import { styled, keyframes } from "stitches-config";
+import React, { useRef } from "react";
+import { createPortal } from "react-dom";
+import { styled } from "stitches-config";
+import { CSSTransition } from "react-transition-group";
+import usePortal from "@/hooks/usePortal";
 
-const Container = styled("div", {
+const Backdrop = styled("div", {
   position: "fixed",
-  top: 0,
-  bottom: 0,
-  left: 0,
-  right: 0,
-  backgroundColor: "rgba(0,0,0,0.6)",
+  inset: "0",
+  backgroundColor: "#000",
+  opacity: "0.5",
+  transition: "opacity 300ms linear",
+  zIndex: 1050,
+
+  ".modal-enter &": {
+    opacity: 0,
+  },
+  ".modal-enter-active &": {
+    opacity: 0.5,
+  },
+  ".modal-exit &": {
+    opacity: 0.5,
+  },
+  ".modal-exit-active &": {
+    opacity: 0,
+  },
 });
 
-const goDown = keyframes({
-  "0%": {
-    top: "-100%",
-  },
-  "100%": {
-    top: "50%",
-  },
+const StyledModal = styled("div", {
+  position: "fixed",
+  inset: "0",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  backgroundColor: "transparent",
+  zIndex: 1055,
 });
 
-const Main = styled("div", {
-  position: "fixed",
-  top: "50%",
-  left: "50%",
+const Dialog = styled("div", {
   height: "auto",
   borderRadius: "$md",
-  transform: "translate(-50%, -50%)",
   backgroundColor: "$ntrl-min",
-  animation: `${goDown} 400ms`,
-  animationDelay: "100ms",
+  zIndex: 1060,
+
+  ".modal-enter &": {
+    opacity: 0,
+    transform: "scale(0.9)",
+  },
+  ".modal-enter-active &": {
+    opacity: 1,
+    transform: "translateX(0)",
+    transition: "opacity 300ms, transform 300ms",
+  },
+  ".modal-exit &": {
+    opacity: 1,
+  },
+  ".modal-exit-active &": {
+    opacity: 0,
+    transform: "scale(0.9)",
+    transition: "opacity 300ms, transform 300ms",
+  },
 });
 
-const Modal: React.FC = (props) => {
-  return (
-    <Container>
-      <Main>{props.children}</Main>
-    </Container>
+interface IModal {
+  show?: boolean;
+  onClose?: () => void;
+}
+
+const Modal: React.FC<IModal> = ({ show, onClose, children }) => {
+  const portal = usePortal("modal");
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const closeModal = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (
+      onClose &&
+      dialogRef.current &&
+      !dialogRef.current.contains(e.target as Node)
+    ) {
+      onClose();
+    }
+  };
+
+  if (!portal) {
+    return null;
+  }
+
+  return createPortal(
+    <CSSTransition
+      in={show}
+      classNames="modal"
+      timeout={300}
+      nodeRef={wrapperRef}
+      unmountOnExit
+    >
+      <div ref={wrapperRef}>
+        <Backdrop />
+        <StyledModal onClick={closeModal}>
+          <Dialog ref={dialogRef}>{children}</Dialog>
+        </StyledModal>
+      </div>
+    </CSSTransition>,
+    portal
   );
 };
 
