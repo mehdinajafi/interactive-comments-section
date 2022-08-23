@@ -1,9 +1,14 @@
-import { styled } from "stitches-config";
+import Image from "next/image";
+import { AppProviders } from "next-auth/providers";
 import { signIn, useSession } from "next-auth/react";
+import { styled } from "stitches-config";
 import GoogleLogo from "@/images/google-logo.png";
 import GithubLogo from "@/images/github-logo.png";
-import Image from "next/image";
-import Typography from "./shared/Typography";
+import Typography from "@/components/shared/Typography";
+
+interface ISignin {
+  providers: AppProviders;
+}
 
 const Wrapper = styled("div", {
   padding: "$8",
@@ -42,23 +47,37 @@ const Button = styled("button", {
   },
 });
 
-const Signin = () => {
+const getProviderLogo = (name: string) => {
+  switch (name) {
+    case "Google":
+      return (
+        <Image src={GoogleLogo} alt="google-logo" width={30} height={30} />
+      );
+    case "GitHub":
+      return (
+        <Image src={GithubLogo} alt="github-logo" width={30} height={30} />
+      );
+  }
+};
+
+const Signin: React.FC<ISignin> = ({ providers }) => {
   const { status } = useSession();
+
   return (
     <Wrapper>
-      <Heading>Sign in</Heading>
-      <Button onClick={() => signIn("google")} disabled={status === "loading"}>
-        <Image src={GoogleLogo} alt="google" width={30} height={30} />
-        <Typography size="sm" weight="regular" css={{ marginLeft: "$10" }}>
-          Sign in with Google
-        </Typography>
-      </Button>
-      <Button onClick={() => signIn("github")} disabled={status === "loading"}>
-        <Image src={GithubLogo} alt="google" width={30} height={30} />
-        <Typography size="sm" weight="regular" css={{ marginLeft: "$10" }}>
-          Sign in with Github
-        </Typography>
-      </Button>
+      <Heading>Welcome</Heading>
+      {Object.values(providers).map((provider) => (
+        <Button
+          key={provider.name}
+          onClick={() => signIn(provider.name)}
+          disabled={status === "loading"}
+        >
+          {getProviderLogo(provider.name)}
+          <Typography size="sm" weight="regular" css={{ marginLeft: "$10" }}>
+            Sign in with {provider.name}
+          </Typography>
+        </Button>
+      ))}
     </Wrapper>
   );
 };
